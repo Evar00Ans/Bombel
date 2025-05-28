@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bomdel - Un lujo que sí puedes darte</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600&display=swap');
+
+    :root {
+      --rosa-pastel: #FFD6E0;
+      --rosa-suave: #FFB3C6;
+      --rosa-medio: #FF8FAB;
+      --dorado-suave: #E6C79C;
+      --dorado-oscuro: #CDB891;
+      --gris-claro: #F8F9FA;
+      --gris-medio: #E9ECEF;
+      --texto-oscuro: #495057;
+      --texto-claro: #6C757D;
+      --blanco: #FFFFFF;
+      --negro: #212529;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--gris-claro);
+      color: var(--texto-oscuro);
+      line-height: 1.6;
+    }
+
+ /* ENCABEZADO ACTUALIZADO */
+header {
+  background: linear-gradient(135deg, var(--rosa-suave), var(--rosa-medio));
+  padding: 10px 0;
+  border-bottom: 3px solid var(--dorado-suave);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  position: relative;
+}
+
+.header-image {
+  height: 220px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
+  position: relative; /* Cambiado de absolute a relative */
+  margin: 0 20px; /* Espacio entre imágenes y texto */
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 15px;
+  z-index: 1;
+  max-width: 60%;
+}
+
+/* Elimina estas clases ya que no las necesitaremos */
+/*
+.header-image.left {
+  left: 5%;
+  transform: translateX(-50%);
+}
+
+.header-image.right {
+  right: 5%;
+  transform: translateX(50%) scaleX(-1);
+}
+*/
+
+.header-image.right {
+  transform: scaleX(-1); /* Solo para voltear la imagen derecha */
+}
+
+.header-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.6));
+}
+
+.header-image.right:hover {
+  transform: scaleX(-1.05) scaleY(1.05);
+}
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 4.5rem; /* Aumentado de 3.8rem */
+  color: var(--blanco); /* Ya está en blanco pero lo dejamos explícito */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 2.2rem; /* Aumentado de 1.8rem */
+  color: var(--blanco); /* Ya está en blanco pero lo dejamos explícito */
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 3.8rem; /* Aumentado de 3rem */
+  }
+  header p {
+    font-size: 1.8rem; /* Aumentado de 1.5rem */
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 3.2rem; /* Aumentado de 2.5rem */
+  }
+  header p {
+    font-size: 1.6rem; /* Aumentado de 1.3rem */
+  }
+}
+
+    nav {
+      background: var(--dorado-suave);
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 12px 0;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--texto-oscuro);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav a:hover {
+      background-color: var(--rosa-medio);
+      color: var(--blanco);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+      padding: 0 20px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 20px;
+      padding-left: 45px;
+      border: 2px solid var(--dorado-suave);
+      border-radius: 30px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-box input:focus {
+      border-color: var(--rosa-medio);
+      box-shadow: 0 4px 12px rgba(255, 143, 171, 0.2);
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: var(--rosa-medio);
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 30px;
+      padding: 0 20px;
+    }
+
+    .category-btn {
+      background: var(--blanco);
+      border: 2px solid var(--dorado-suave);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover, .category-btn.active {
+      background: var(--rosa-medio);
+      color: var(--blanco);
+      border-color: var(--rosa-medio);
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* Productos */
+    #productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .producto {
+      background: var(--blanco);
+      border: 2px solid var(--dorado-suave);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      position: relative;
+    }
+
+    .producto.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .producto.destacado {
+      border: 2px solid var(--rosa-medio);
+    }
+
+    .producto:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      border-color: var(--rosa-medio);
+    }
+
+    .producto .favorite {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: var(--rosa-medio);
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .producto .favorite:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .producto .favorite.active {
+      color: #ff0000;
+      opacity: 1;
+    }
+
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--rosa-suave);
+      transition: transform 0.3s ease;
+    }
+
+    .producto:hover img {
+      transform: scale(1.03);
+    }
+
+    .producto h3 {
+      margin: 12px 0 6px;
+      font-size: 1.1rem;
+      color: var(--rosa-medio);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .producto p {
+      text-align: center;
+      font-weight: 500;
+      color: var(--texto-claro);
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .producto .price {
+      color: var(--dorado-oscuro);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 5px;
+    }
+
+    .badge-destacado {
+      position: absolute;
+      top: 10px;
+      left: -25px;
+      background-color: var(--rosa-medio);
+      color: var(--blanco);
+      padding: 3px 30px;
+      font-size: 0.7rem;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Sección Nosotros */
+    #nosotros {
+      background: var(--blanco);
+      border: 2px solid var(--dorado-suave);
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #nosotros.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #nosotros h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.4rem;
+      color: var(--rosa-medio);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #nosotros section {
+      margin-bottom: 25px;
+    }
+
+    #nosotros h3 {
+      font-size: 1.4rem;
+      color: var(--dorado-oscuro);
+      border-bottom: 1px solid var(--dorado-suave);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #nosotros p {
+      font-size: 1rem;
+      color: var(--texto-oscuro);
+      line-height: 1.6;
+      padding-left: 30px;
+    }
+
+    /* Contáctanos */
+    #contacto {
+      background: var(--blanco);
+      border: 2px solid var(--dorado-suave);
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #contacto.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #contacto h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.4rem;
+      color: var(--rosa-medio);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #contacto p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: var(--texto-oscuro);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    #contacto p strong {
+      color: var(--rosa-medio);
+    }
+
+    #contacto .info-contacto {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--dorado-oscuro);
+      margin-top: 30px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dorado-suave);
+      color: var(--texto-oscuro);
+      text-align: center;
+      padding: 20px 10px;
+      font-weight: 500;
+      font-size: 1rem;
+      margin-top: 50px;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    footer .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    footer .social-icons a {
+      color: var(--texto-oscuro);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      color: var(--rosa-medio);
+      transform: translateY(-3px);
+    }
+
+    /* Títulos principales */
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+    }
+
+    /* Mensaje cuando no hay resultados de búsqueda */
+    .no-results {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 40px;
+      font-size: 1.2rem;
+      color: var(--texto-claro);
+    }
+
+    /* Responsive general */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 15px;
+      }
+
+      nav a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+
+      #productos {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+      }
+
+      #nosotros, #contacto {
+        padding: 20px;
+      }
+
+      #nosotros h2, #contacto h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #productos {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+
+      .categories {
+        gap: 8px;
+      }
+
+      .category-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <img src="https://i.imgur.com/US4ntJq.png" alt="Decoración floral" class="header-image">
+    <div class="header-content">
+      <h1>Bomdel 💖</h1>
+      <p><em>"Un lujo que sí puedes darte." ✨</em></p>
+    </div>
+    <img src="https://i.imgur.com/VE9kQli.png" alt="Decoración floral" class="header-image right">
+  </div>
+</header>
+
+<nav>
+  <a href="#inicio">🏠 Inicio</a>
+  <a href="#productos">👜 Productos</a>
+  <a href="#nosotros">👥 Nosotros</a>
+  <a href="#contacto">📞 Contáctanos</a>
+</nav>
+
+<main>
+  <section id="inicio" aria-label="Inicio">
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Buscar productos..." aria-label="Buscar productos">
+      </div>
+    </div>
+
+    <div class="categories">
+      <button class="category-btn active" data-category="all">Todos</button>
+      <button class="category-btn" data-category="bolsas">👜 Bolsas</button>
+      <button class="category-btn" data-category="carteras">💼 Carteras</button>
+      <button class="category-btn" data-category="mochilas">🎒 Mochilas</button>
+      <button class="category-btn" data-category="cinturones">👔 Cinturones</button>
+      <button class="category-btn" data-category="camisas">👕 Camisas</button>
+      <button class="category-btn" data-category="accesorios">💍 Accesorios</button>
+      <button class="category-btn" data-category="otros">🧴 Otros</button>
+    </div>
+  </section>
+
+  <section id="productos" aria-label="Productos">
+    <!-- Productos generados dinámicamente por JavaScript -->
+  </section>
+
+  <section id="nosotros" aria-label="Nosotros">
+    <h2>👑 Nosotros</h2>
+
+    <section>
+      <h3>👁️ Visión</h3>
+      <p>Ser la marca líder en productos originales y accesibles que enamoren a cada mujer que busca calidad con estilo.</p>
+    </section>
+
+    <section>
+      <h3>🎯 Misión</h3>
+      <p>Ofrecer productos de marca originales a precios accesibles, brindando una experiencia de compra única, elegante y confiable.</p>
+    </section>
+
+    <section>
+      <h3>💎 Valores</h3>
+      <p>Compromiso, autenticidad, elegancia, accesibilidad, y cuidado al cliente.</p>
+    </section>
+
+    <section>
+      <h3>📜 Historia</h3>
+      <p>
+        Bomdel nació del sueño de crear una marca que permitiera a las mujeres disfrutar del lujo sin sacrificar su presupuesto. Desde nuestros inicios, hemos trabajado con pasión para ofrecer productos originales, auténticos y con un estilo único que refleje confianza y sofisticación.
+      </p>
+    </section>
+  </section>
+
+  <section id="contacto" aria-label="Contáctanos">
+    <h2>📩 Contáctanos</h2>
+    <p>📌 Para mayor información, dirígete con Jazmín Macías</p>
+    <p class="info-contacto">📱 5610320469 </p>
+
+    <p><strong>🚚 ENVIOS A TODO MÉXICO</strong></p>
+
+    <p><strong>📦 ENVÍO ECONÓMICO (CORREOS DE MÉXICO)</strong><br/>
+      💵 Costo: $70<br/>
+      ⏳ Días aproximados de llegada entre 10 a 15 días hábiles
+    </p>
+
+    <p><strong>🚛 ENVÍO POR PAQUETERÍA (ESTAFETA, FEDEX)</strong><br/>
+      💵 Costos desde: $200<br/>
+      📌 Entre más productos más valor tiene el costo de envío<br/>
+      ⏳ Días aproximados de 3 a 5 días hábiles
+    </p>
+
+    <p><strong>⚡ ENVÍO EXPRESS (DHL)</strong><br/>
+      💵 Costos desde: $280<br/>
+      📌 Entre más productos más valor tiene el costo de envío<br/>
+      ⏳ Días aproximados de 1 a 3 días hábiles
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Bomdel. Todos los derechos reservados</p>
+  <p class="copyright">
+    Diseñado por <a href="https://www.instagram.com/la_dhanys_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">🎀✨ Dhany´s Original Crafts ✨🎀</a>
+  </p>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook">📘</a>
+    <a href="#" aria-label="Instagram">📷</a>
+    <a href="#" aria-label="WhatsApp">💬</a>
+    <a href="#" aria-label="TikTok">🎵</a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    /**
+     * Formatea un precio numérico a formato monetario
+     * @param {number} price - Precio numérico
+     * @returns {string} Precio formateado como "$1,234.56 MXN"
+     */
+    function formatPrice(price) {
+      const numPrice = typeof price === 'number' ? price : parseFloat(price);
+      if (isNaN(numPrice)) {
+        console.warn('El precio no es un número válido:', price);
+        return '$0.00 MXN';
+      }
+      return '$' + numPrice.toLocaleString('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + ' MXN';
+    }
+
+    // Lista completa de productos con imágenes corregidas
+    const productos = [
+      { 
+        nombre: "Bolsa Guess", 
+        precio: 1600.00, 
+        imagen: "https://i.imgur.com/fQjdl97.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Bolsa tote Tommy", 
+        precio: 1300.00, 
+        imagen: "https://i.imgur.com/Gso0fw1.jpg",
+        categoria: "bolsas",
+        destacado: false
+      },
+      { 
+        nombre: "Cosmequitera", 
+        precio: 900.00, 
+        imagen: "https://i.imgur.com/k996mJ7.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Cinturon Caballero", 
+        precio: 379.99, 
+        imagen: "https://i.imgur.com/nTtYeWz.jpg",
+        categoria: "cinturones",
+        destacado: false
+      },
+      { 
+        nombre: "Clutch Dorado Dama", 
+        precio: 800.00, 
+        imagen: "https://i.imgur.com/uYLNtMu.jpg",
+        categoria: "cinturones",
+        destacado: true
+      },
+      { 
+        nombre: "Cremas", 
+        precio: 429.00, 
+        imagen: "https://i.imgur.com/dXINGne.jpg",
+        categoria: "otros",
+        destacado: false
+      },
+      { 
+        nombre: "Morral Minimalista", 
+        precio: 800.00, 
+        imagen: "https://i.imgur.com/2io5pil.jpg",
+        categoria: "mochilas",
+        destacado: false
+      },
+      { 
+        nombre: "Bolsa de Noche", 
+        precio: 1500.00, 
+        imagen: "https://i.imgur.com/QyKIiZY.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Sandalias", 
+        precio: 350.00, 
+        imagen: "https://i.imgur.com/DoahAZ4.jpg",
+        categoria: "otros",
+        destacado: false
+      },
+      { 
+        nombre: "Cinturon Doble Vista", 
+        precio: 750.00, 
+        imagen: "https://i.imgur.com/Z9hG0uB.jpg",
+        categoria: "cinturones",
+        destacado: false
+      },
+      { 
+        nombre: "Riñonera", 
+        precio: 1100.00, 
+        imagen: "https://i.imgur.com/auoBz7P.jpg",
+        categoria: "carteras",
+        destacado: true
+      },
+      { 
+        nombre: "Riñonera", 
+        precio: 1000.00, 
+        imagen: "https://i.imgur.com/aqK2BPI.jpg",
+        categoria: "carteras",
+        destacado: false
+      },
+      { 
+        nombre: "Cosmequitera", 
+        precio: 800.00, 
+        imagen: "https://i.imgur.com/igL0kWq.jpg",
+        categoria: "bolsas",
+        destacado: false
+      },
+      { 
+        nombre: "Muñequera Guess", 
+        precio: 750.00, 
+        imagen: "https://i.imgur.com/0bKprJK.jpg",
+        categoria: "accesorios",
+        destacado: false
+      },
+      { 
+        nombre: "Cosmequitera Guess", 
+        precio: 600.00, 
+        imagen: "https://i.imgur.com/Rd4dfjQ.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Sandalias", 
+        precio: 1000.00, 
+        imagen: "https://i.imgur.com/rJOMKWH.jpg",
+        categoria: "otros",
+        destacado: false
+      },
+      { 
+        nombre: "Bolsa para Dama", 
+        precio: 2800.50, 
+        imagen: "https://i.imgur.com/LGHDEA7.jpg",
+        categoria: "bolsas",
+        destacado: false
+      },
+      { 
+        nombre: "Riñonera", 
+        precio: 1100.95, 
+        imagen: "https://i.imgur.com/PqeMNAb.jpg",
+        categoria: "carteras",
+        destacado: true
+      },
+      { 
+        nombre: "Bolsa de Mano", 
+        precio: 1100.00, 
+        imagen: "https://i.imgur.com/ewPyRQN.jpg",
+        categoria: "bolsas",
+        destacado: false
+      },
+      { 
+        nombre: "Riñonera", 
+        precio: 1100.50, 
+        imagen: "https://i.imgur.com/2LdLSNF.jpg",
+        categoria: "carteras",
+        destacado: false
+      },
+      { 
+        nombre: "Lonchera", 
+        precio: 900.99, 
+        imagen: "https://i.imgur.com/YBvDa5o.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Bolsa Guess", 
+        precio: 1600.00, 
+        imagen: "https://i.imgur.com/M2v07eC.jpg",
+        categoria: "carteras",
+        destacado: false
+      },
+      { 
+        nombre: "Cosmequitera Guess", 
+        precio: 600.50, 
+        imagen: "https://i.imgur.com/w9xtLOB.jpg",
+        categoria: "bolsas",
+        destacado: true
+      },
+      { 
+        nombre: "Camisa Blanca", 
+        precio: 499.00, 
+        imagen: "https://i.imgur.com/RcU9Ipa.jpg",
+        categoria: "camisas",
+        destacado: false
+      },
+      { 
+        nombre: "Camisa Negra", 
+        precio: 499.95, 
+        imagen: "https://i.imgur.com/7GG2ECw.jpg",
+        categoria: "camisas",
+        destacado: false
+      },
+      { 
+        nombre: "Camisa Blanca", 
+        precio: 499.50, 
+        imagen: "https://i.imgur.com/3dTA75V.jpg",
+        categoria: "camisas",
+        destacado: true
+      },
+      { 
+        nombre: "Camisa Negra", 
+        precio: 499.00, 
+        imagen: "https://i.imgur.com/jrPLOZx.jpg",
+        categoria: "camisas",
+        destacado: false
+      },
+      { 
+        nombre: "Paquete de Boxers Calvin Klein", 
+        precio: 299.99, 
+        imagen: "https://i.imgur.com/AGCyrrq.jpg",
+        categoria: "otros",
+        destacado: false
+      },
+      { 
+        nombre: "Paquete de Boxers Lev´s", 
+        precio: 299.50, 
+        imagen: "https://i.imgur.com/rcYYGej.jpg",
+        categoria: "otros",
+        destacado: true
+      }
+    ];
+
+    // Elementos del DOM
+    const productosContainer = document.getElementById('productos');
+    const searchInput = document.getElementById('search-input');
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    
+    // Variables de estado
+    let currentCategory = 'all';
+    let currentSearchTerm = '';
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Función para renderizar productos
+    function renderProducts() {
+      if (!productosContainer) {
+        console.error('Error: No se encontró el contenedor de productos');
+        return;
+      }
+      
+      const filteredProducts = productos.filter(producto => {
+        const matchesCategory = currentCategory === 'all' || producto.categoria === currentCategory;
+        const matchesSearch = producto.nombre.toLowerCase().includes(currentSearchTerm.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+      
+      productosContainer.innerHTML = '';
+      
+      if (filteredProducts.length === 0) {
+        productosContainer.innerHTML = `
+          <div class="no-results">
+            <p>No se encontraron productos que coincidan con tu búsqueda.</p>
+            <p>Intenta con otros términos o selecciona una categoría diferente.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      filteredProducts.forEach(producto => {
+        const isFavorite = favorites.includes(producto.nombre);
+        const productoElement = document.createElement('div');
+        productoElement.className = `producto ${producto.destacado ? 'destacado' : ''}`;
+        
+        productoElement.innerHTML = `
+          <div class="favorite ${isFavorite ? 'active' : ''}">${isFavorite ? '❤️' : '🤍'}</div>
+          <img src="${producto.imagen}" alt="${producto.nombre}" 
+               onerror="this.onerror=null;this.src='https://via.placeholder.com/200x160/F5F5F5/555555?text=Imagen+no+disponible'"
+               loading="lazy">
+          <h3>${producto.nombre}</h3>
+          <p class="price">${formatPrice(producto.precio)}</p>
+          ${producto.destacado ? '<span class="badge-destacado">🌟 Destacado</span>' : ''}
+        `;
+        
+        productosContainer.appendChild(productoElement);
+      });
+      
+      setupIntersectionObserver();
+      setupFavoritesEvents();
+    }
+
+    // Configurar IntersectionObserver para animaciones
+    function setupIntersectionObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.producto').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Configurar eventos de favoritos
+    function setupFavoritesEvents() {
+      document.querySelectorAll('.favorite').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const productName = this.closest('.producto').querySelector('h3').textContent;
+          
+          const index = favorites.indexOf(productName);
+          if (index === -1) {
+            favorites.push(productName);
+          } else {
+            favorites.splice(index, 1);
+          }
+          
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+          
+          this.classList.toggle('active');
+          this.textContent = this.classList.contains('active') ? '❤️' : '🤍';
+        });
+      });
+    }
+
+    // Evento de búsqueda
+    searchInput.addEventListener('input', function() {
+      currentSearchTerm = this.value;
+      renderProducts();
+    });
+
+    // Eventos de categorías
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        renderProducts();
+      });
+    });
+
+    // Smooth scroll para navegación
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Renderizar productos inicialmente
+    renderProducts();
+
+    // Observar elementos que deben aparecer
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('#nosotros, #contacto').forEach(el => {
+      sectionObserver.observe(el);
+    });
+
+    // Verificador de imágenes
+    function checkImages() {
+      console.log("=== VERIFICACIÓN DE IMÁGENES ===");
+      productos.forEach((producto, index) => {
+        const img = new Image();
+        img.onload = () => console.log(`✅ ${index + 1}. ${producto.nombre} - CARGA CORRECTA`);
+        img.onerror = () => console.error(`❌ ${index + 1}. ${producto.nombre} - ERROR AL CARGAR`);
+        img.src = producto.imagen;
+      });
+    }
+    setTimeout(checkImages, 2000);
+  });
+</script>
+</body>
+</html>
